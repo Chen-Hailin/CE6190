@@ -5,6 +5,8 @@ from tqdm import tqdm
 from collections import Counter, defaultdict
 import os, errno
 from multiprocessing import Pool
+import argparse
+
 
 data_root = '/export/home/CE6190_ass_1/dataset/games'
 
@@ -33,6 +35,7 @@ def single_process_l2Id(f_path):
     Image.fromarray(new_im.astype(np.uint8)).save(os.path.join(data_root, 'trainId_labels', file_name))
 
 def multiprocessing_convert_label_to_trainId():
+    # convert original label to cityscape-like label ID
     file_paths = glob.glob(os.path.join(data_root, 'source_labels')+'/*.png')
     with Pool(20) as p:
         r = list(tqdm(p.imap(single_process_l2Id, file_paths), total=2500))
@@ -73,12 +76,13 @@ def split_train_valid():
             split = 'val'
         else:
             split = 'train'
+        
         # image
+        img_src = os.path.join(data_root, 'source_images', str(idx).zfill(5)+'.png')
+        img_dst = os.path.join(data_root, 'images', split, f'{split}_'+str(idx).zfill(5)+'_image.png')
+        os.symlink(img_src, img_dst)
 
-        # img_src = os.path.join(data_root, 'source_images', str(idx).zfill(5)+'.png')
-        # img_dst = os.path.join(data_root, 'images', split, f'{split}_'+str(idx).zfill(5)+'_image.png')
-        # os.symlink(img_src, img_dst)
-
+        # labels
         label_src = os.path.join(data_root, 'trainId_labels',str(idx).zfill(5)+'.png')
         label_dst = os.path.join(data_root, 'labels', split, f'{split}_'+str(idx).zfill(5)+'_labelIds.png')
         try:
@@ -89,6 +93,6 @@ def split_train_valid():
                 os.symlink(label_src, label_dst)
 
 if __name__ == '__main__':
-    split_train_valid()
     # check_label_range()
-    # multiprocessing_convert_label_to_trainId()
+    multiprocessing_convert_label_to_trainId()
+    split_train_valid()
