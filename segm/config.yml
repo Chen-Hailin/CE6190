@@ -57,6 +57,14 @@ model:
     n_layers: 12
     normalization: vit
     distilled: false
+  vit_small_patch16_384_no_pretrain:
+    image_size: 384
+    patch_size: 16
+    d_model: 384
+    n_heads: 6
+    n_layers: 12
+    normalization: vit
+    distilled: false
   vit_base_patch16_384:
     image_size: 384
     patch_size: 16
@@ -126,6 +134,15 @@ dataset:
     eval_freq: 4
     batch_size: 8
     learning_rate: 0.01
+    im_size: 1024
+    crop_size: 768
+    window_size: 768
+    window_stride: 512
+  games:
+    epochs: 100
+    eval_freq: 4
+    batch_size: 4
+    learning_rate: 0.001
     im_size: 1024
     crop_size: 768
     window_size: 768

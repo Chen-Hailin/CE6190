@@ -61,8 +61,8 @@ def convert_json_to_label(json_file):
 
 @click.command(help="Initialize Cityscapes dataset.")
 @click.argument("download_dir", type=str)
-@click.option("--username", default=USERNAME, type=str)
-@click.option("--password", default=PASSWORD, type=str)
+@click.option("--username", default='hailin001@e.ntu.edu.sg', type=str)
+@click.option("--password", default='Publishpapers726954!', type=str)
 @click.option("--nproc", default=10, type=int)
 def main(
     download_dir,

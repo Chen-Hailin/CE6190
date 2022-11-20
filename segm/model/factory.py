@@ -70,6 +70,9 @@ def create_vit(model_cfg):
         state_dict = torch.load(path, map_location="cpu")
         filtered_dict = checkpoint_filter_fn(state_dict, model)
         model.load_state_dict(filtered_dict, strict=True)
+    elif 'no_pretrain' in backbone:
+        print('no loading pretrain for backbone')
+        pass # not loading pretrain weights
     elif "deit" in backbone:
         load_pretrained(model, default_cfg, filter_fn=checkpoint_filter_fn)
     else:

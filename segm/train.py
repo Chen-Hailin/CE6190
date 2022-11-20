@@ -40,6 +40,7 @@ from segm.engine import train_one_epoch, evaluate
 @click.option("--drop-path", default=0.1, type=float)
 @click.option("--batch-size", default=None, type=int)
 @click.option("--epochs", default=None, type=int)
+@click.option("--port", default=12345, type=int)
 @click.option("-lr", "--learning-rate", default=None, type=float)
 @click.option("--normalization", default=None, type=str)
 @click.option("--eval-freq", default=None, type=int)
@@ -61,6 +62,7 @@ def main(
     drop_path,
     batch_size,
     epochs,
+    port,
     learning_rate,
     normalization,
     eval_freq,
@@ -69,7 +71,7 @@ def main(
 ):
     # start distributed mode
     ptu.set_gpu_mode(True)
-    distributed.init_process()
+    distributed.init_process(port)
 
     # set up configuration
     cfg = config.load_config()

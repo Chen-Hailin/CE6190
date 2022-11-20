@@ -8,7 +8,7 @@ import torchvision.transforms.functional as F
 import segm.utils.torch as ptu
 
 from segm.data.utils import STATS
-from segm.data.ade20k import ADE20K_CATS_PATH
+from segm.data.games import GAMES_CATS_PATH
 from segm.data.utils import dataset_cat_description, seg_to_rgb
 
 from segm.model.factory import load_model
@@ -29,7 +29,7 @@ def main(model_path, input_dir, output_dir, gpu):
 
     normalization_name = variant["dataset_kwargs"]["normalization"]
     normalization = STATS[normalization_name]
-    cat_names, cat_colors = dataset_cat_description(ADE20K_CATS_PATH)
+    cat_names, cat_colors = dataset_cat_description(GAMES_CATS_PATH)
 
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)

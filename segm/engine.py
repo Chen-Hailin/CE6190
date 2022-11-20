@@ -28,11 +28,10 @@ def train_one_epoch(
     for batch in logger.log_every(data_loader, print_freq, header):
         im = batch["im"].to(ptu.device)
         seg_gt = batch["segmentation"].long().to(ptu.device)
-
         with amp_autocast():
             seg_pred = model.forward(im)
             loss = criterion(seg_pred, seg_gt)
-
+        
         loss_value = loss.item()
         if not math.isfinite(loss_value):
             print("Loss is {}, stopping training".format(loss_value), force=True)
