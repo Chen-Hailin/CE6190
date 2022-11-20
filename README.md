@@ -42,3 +42,25 @@ project
         │    
         │───...  
 ```
+
+## Experiments
+under project's root directory, run:
+```sh
+git clone -b segmenter --single-branch git@github.com:Chen-Hailin/CE6190.git segmenter
+git clone -b segformer --single-branch git@github.com:Chen-Hailin/CE6190.git segformer
+```
+You should have the following file structure:
+```
+project
+│   README.md
+│       
+└───dataset
+│       
+└───segmenter
+│       
+└───segformer
+```
+Go to `segmenter` or `segformer` directory and follow the readme.md instructions there to run experiments.
+
+
+
