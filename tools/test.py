@@ -35,7 +35,7 @@ def parse_args():
         ' for generic datasets, and "cityscapes" for Cityscapes')
     parser.add_argument('--show', action='store_true', help='show results')
     parser.add_argument(
-        '--show-dir', help='directory where painted images will be saved')
+        '--show-dir', help='directory where painted images will be saved', default='./games_pred')
     parser.add_argument(
         '--gpu-collect',
         action='store_true',
@@ -65,7 +65,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-
+    print(f"show dir: {args.show_dir}")
     assert args.out or args.eval or args.format_only or args.show \
         or args.show_dir, \
         ('Please specify at least one operation (save/eval/format/show the '

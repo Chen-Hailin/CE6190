@@ -261,6 +261,7 @@ class BaseSegmentor(nn.Module):
 
         if show:
             mmcv.imshow(img, win_name, wait_time)
+        
         if out_file is not None:
             mmcv.imwrite(img, out_file)
 
