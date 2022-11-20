@@ -60,7 +60,7 @@ project
 │       
 └───segformer
 ```
-Go to `segmenter` or `segformer` directory and follow the readme.md instructions there to run experiments.
+Go to `segmenter` or `segformer` directory and follow the readme.md instructions there(or see readme on branch `segmenter` or `segformer`) to run experiments.
 
 
 
