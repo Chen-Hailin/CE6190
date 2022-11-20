@@ -1,0 +1,25 @@
+Starting process with rank 0...
+Traceback (most recent call last):
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/export/home/CE6190_ass_1/segmenter/segm/train.py", line 306, in <module>
+    main()
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/export/home/CE6190_ass_1/segmenter/segm/train.py", line 74, in main
+    distributed.init_process(port)
+  File "/export/home/CE6190_ass_1/segmenter/segm/utils/distributed.py", line 28, in init_process
+    world_size=ptu.world_size,
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/torch/distributed/distributed_c10d.py", line 520, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/export/home/anaconda/envs/segmenter/lib/python3.7/site-packages/torch/distributed/rendezvous.py", line 199, in _env_rendezvous_handler
+    store = TCPStore(master_addr, master_port, world_size, start_daemon, timeout)
+RuntimeError: Address already in use
